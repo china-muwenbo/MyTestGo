@@ -9,6 +9,7 @@ import (
 // 创建10个线程
 //主线程阻塞，等待所有子线程计算完成
 // 子线程完成把结果放在子线程中
+// 如果 所有协程终止，而主线程继续等待通道 会报错 all goroutines are asleep - deadlock!
 
 func main()  {
 	var testchan =make(chan int ,10)
@@ -20,7 +21,6 @@ func main()  {
 		fmt.Println("协程完成:",a)
 	}
 	fmt.Println("主程完成")
-
 }
 
 func child(mychan chan int,index int  ){
@@ -31,5 +31,4 @@ func child(mychan chan int,index int  ){
 	*/
 	time.Sleep(time.Second*time.Duration(rand.Intn(10)))
 	mychan<-index;
-
 }

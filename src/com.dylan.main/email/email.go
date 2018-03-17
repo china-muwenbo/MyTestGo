@@ -17,8 +17,8 @@ func main() {
 	m.SetHeader("Subject", "Hello!")
 
 	m.SetBody("text/html", "Hello <b>Bob</b> and <i>Cora</i>!")
-	// 居然给老子标记垃圾邮件
-	d := gomail.NewDialer("smtp.163.com", 465, "18729243053@163.com", "muwenbo100")
+	// QQ邮箱 居然给老子标记垃圾邮件
+	d := gomail.NewDialer("smtp.163.com", 465, "18729243053@163.com", "********")
 
 	// Send the email to Bob, Cora and Dan.
 	if err := d.DialAndSend(m); err != nil {
