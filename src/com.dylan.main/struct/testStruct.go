@@ -15,16 +15,19 @@ func main() {
 	p = &person{
 	}
 	(*p).name = "Jerry"
+	p.name="yy"
 	(*p).ctiy = "xi'an"
 	fmt.Println(p)
 	//Pp(p)
 	p.Pp()
 	fmt.Println(p)
 }
+
 func(p *person) Pp() {
 	p.name="func"
 	fmt.Println("func p ", p)
 }
+
 //
 //package main
 //
