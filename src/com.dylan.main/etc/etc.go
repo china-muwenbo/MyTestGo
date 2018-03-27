@@ -22,3 +22,4 @@ func test(index int ){
 	defer fmt.Println("退出test ",index)
 	ch<-index
 }
+

@@ -30,5 +30,23 @@ func main() {
 	}
 	delete(m1,"a")
 	delete(m1,"a")
+}
+func test(){
+	var m1 map[string]string
+	m1=make(map[string]string)
+	m1["a"]="aa"
+	m1["b"]="bb"
+
+	delete(m1,"a")
+
+	if v, ok := m1["a"];ok {
+		fmt.Println(v)
+	}
+	
+	//
+	//for k,v:= range m1  {
+	//fmt.Println(k,v)
+	//}
+
 
 }
