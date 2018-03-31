@@ -17,20 +17,15 @@ func main() {
 		     fmt.Println(err)
 		     return
 		 }
-
-	t:=Test{"helo","123"}
+	//t:=Test{"hello","123"}
 	//t1:=&Test{"helo","123"}
-	err=c.Send("auth","muwenbo")
 
+	err=c.Send("auth","muwenbo")
 	if err !=nil {
     fmt.Println(err)
     }
-	err=c.Send("set","test",t)
-
-	re,err:=redis.String(c.Do("get","test"))
-
-	//fmt.Printf("%s",re)
+	err=c.Send("set","key","value")
+	re,err:=redis.String(c.Do("get","key"))
 	fmt.Println(re)
-
 	defer c.Close()
 }
