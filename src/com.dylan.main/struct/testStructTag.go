@@ -8,6 +8,8 @@ import (
 type Person struct {
 	name string `name:"jerry"`
 	age int `age:"28" `
+	//这是xorm 框架的
+	//`xorm:"not null index VARCHAR(200)" json:"mp3"`
 }
 
 type T struct {
@@ -24,7 +26,6 @@ func main() {
 		f := s.Field(i)
 		fmt.Printf("%d: %s %s = %v\n", i, typeOfT.Field(i).Name, f.Type(), f.Interface())
 	}
-
 
 }
 

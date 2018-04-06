@@ -11,8 +11,8 @@ age int `age:"1"`
 	}
 
 func main() {
-	user:=&User{"jerry",20}
-	field, ok := reflect.TypeOf(user).Elem().FieldByName("name")
+	user:=User{"jerry",20}
+	field, ok := reflect.TypeOf(&user).Elem().FieldByName("name")
 	if !ok {
 		panic("Field not found")
 	}

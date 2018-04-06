@@ -106,6 +106,10 @@ func main() {
 
 
 }
+type A struct {
+	Name string
+	B string
+}
 
 
 

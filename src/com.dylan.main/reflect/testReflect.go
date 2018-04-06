@@ -60,6 +60,7 @@ func test4() {
 	//fmt.Println(myType)     //就是检查一下myType对象内容
 	//println("---------------")
 	mtV := reflect.ValueOf(&myType).Elem()
+
 	fmt.Println("Before:",mtV.MethodByName("String").Call(nil)[0])
 	params := make([]reflect.Value,1)
 	params[0] = reflect.ValueOf(18)
@@ -71,10 +72,22 @@ func test4() {
 func test44(){
 	myType := &MyType{22,"jerry"}
 	mtV := reflect.ValueOf(&myType).Elem()
+	fmt.Println(mtV)
 	fmt.Println("Before:",mtV.Method(2).Call(nil)[0])
+	//获取结构体参数类型
+	//获取结构体参数值
+
+	 //获取标签名
+
+	 //获取标签值
+
+
+
 	params := make([]reflect.Value,1)
-	params[0] = reflect.ValueOf(18)
+	params[0] = reflect.ValueOf(21)
 	mtV.Method(0).Call(params)
+	//获取方法的参数
+	fmt.Println(mtV.Method(0).Type())
 	params[0] = reflect.ValueOf("reflection test")
 	mtV.Method(1).Call(params)
 	fmt.Println("After:",mtV.Method(2).Call(nil)[0])
