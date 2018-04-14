@@ -23,15 +23,14 @@ type person struct {
 
 func main() {
 	mgo.SetDebug(true)
-	//mgo.SetLogger()
 	mgo.SetStats(true)
 	op:=new(Operater)
 	op.dbname="mytest"
 	op.document="people"
 	err:=op.connect()
 	if err !=nil {
-	    fmt.Println("连接出错",err)
-	    return
+		fmt.Println("连接出错",err)
+		return
 	}
 
 	p:=person{
@@ -78,7 +77,7 @@ func (operater *Operater) insert( p person) error {
 	err:=collcetion.Insert(p)
 	return err
 }
-//查询所有
+//统计文档中数据的个数
 func (operater *Operater) queryAll() ([]person,error) {
 	collcetion:=operater.mogSession.DB(operater.dbname).C(operater.document)
 	p:=new(person)
@@ -94,12 +93,12 @@ func (operater *Operater) queryAll() ([]person,error) {
 	}
 	return ps,nil
 }
-//条件查询
+//统计文档中数据的个数
 func (operater *Operater) query() ([]person,error) {
 	collcetion:=operater.mogSession.DB(operater.dbname).C(operater.document)
 	p:=new(person)
 	p.AGE=33
-	query:=collcetion.Find(bson.M{"age":bson.M{"$eq":21}})
+	query:=collcetion.Find(bson.M{"age":21})
 	ps:=[]person{}
 	query.All(&ps)
 	fmt.Println(ps)
@@ -116,7 +115,7 @@ func (operater *Operater) update() (error) {
 	}
 	err:=collcetion.Update(bson.M{"name": "周杰伦"},update)
 	if err !=nil {
-	    fmt.Println(err)
+		fmt.Println(err)
 	}
 	return err
 }
@@ -127,6 +126,10 @@ func (operater *Operater) updateAll() (error) {
 		33,
 		"詹姆斯",
 		201,
+	}
+	err:=collcetion.UpdateId(1,update)
+	if err !=nil {
+		fmt.Println(err)
 	}
 	changeinfo,err:=collcetion.UpdateAll(bson.M{"name": "周杰伦"},update)
 	if err !=nil {
