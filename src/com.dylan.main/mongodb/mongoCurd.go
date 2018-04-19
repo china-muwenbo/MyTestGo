@@ -7,7 +7,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-const url  = "mongodb://123.207.215.200:27017";
+const url  = "mongodb://123.207.215.205:27017";
 
 type Operater struct {
 	mogSession *mgo.Session

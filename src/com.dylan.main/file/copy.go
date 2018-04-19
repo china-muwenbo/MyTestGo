@@ -102,6 +102,7 @@ func main() {
 	}
 
 	fnew.Close()
+
 	fvideo.Close()
 
 

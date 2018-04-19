@@ -12,6 +12,7 @@ var  ch chan int
 
 
 func main() {
+
 	mutex=new(sync.Mutex)
 	fmt.Println("start")
 	ch=make(chan int )
